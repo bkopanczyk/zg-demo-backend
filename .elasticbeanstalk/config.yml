@@ -4,7 +4,7 @@ branch-defaults:
 environment-defaults:
   Zgdemobackendapp-env:
     branch: main
-    repository: origin
+    repository: zg-demo-backend-app
 global:
   application_name: zg-demo-backend-app
   default_ec2_keyname: null
