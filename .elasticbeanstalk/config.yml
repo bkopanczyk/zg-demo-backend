@@ -17,3 +17,5 @@ global:
   profile: vl
   sc: git
   workspace_type: Application
+deploy:
+  artifact: target/zg-demo-backend-app-eb.jar
