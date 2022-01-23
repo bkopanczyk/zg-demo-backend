@@ -1,23 +1,16 @@
 package one.valuelogic.demo.control
 
 import one.valuelogic.demo.entity.User
+import one.valuelogic.demo.repository.UserRepository
 import org.springframework.data.domain.Page
-import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
-class UserService {
+@Transactional
+class UserService(private val userRepository: UserRepository) {
     fun getUsers(page: Pageable): Page<User>? {
-        return PageImpl(
-            listOf(
-                User(
-                    id = 1,
-                    email = "test@valuelogic.one",
-                    firstName = "Gordon",
-                    lastName = "Shumway"
-                )
-            )
-        )
+        return userRepository.findAll(page)
     }
 }

@@ -6,7 +6,18 @@ spring:
   application.name: zg-demo-backend-app
   main:
     banner-mode: 'off'
-
+  jpa:
+      open-in-view: false
+      properties:
+        hibernate:
+          show_sql: true
+          use_sql_comments: true
+          format_sql: true
+      hibernate:
+        ddl-auto: create
+        naming:
+          physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+          implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
 management:
   endpoint:
     health:
@@ -16,3 +27,11 @@ management:
       base-path: /actuator
       exposure:
         include: health
+cloud:
+  aws:
+    region:
+      static: eu-west-1
+vl:
+  datasource:
+    secret: vl/zg/demo/backend/datasource
+
