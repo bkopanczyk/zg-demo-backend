@@ -14,10 +14,13 @@ spring:
           use_sql_comments: true
           format_sql: true
       hibernate:
-        ddl-auto: create
+        ddl-auto: update
         naming:
           physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
           implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+  datasource:
+    url: jdbc:postgresql://localhost:5432/zgora
+
 management:
   endpoint:
     health:
@@ -34,4 +37,3 @@ cloud:
 vl:
   datasource:
     secret: vl/zg/demo/backend/datasource
-
