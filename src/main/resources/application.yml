@@ -33,7 +33,7 @@ management:
 cloud:
   aws:
     region:
-      static: eu-west-1
+      static: eu-central-1
 vl:
   datasource:
     secret: vl/zg/demo/backend/datasource
