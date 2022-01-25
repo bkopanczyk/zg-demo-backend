@@ -1,6 +1,6 @@
 branch-defaults:
   main:
-    environment: Zgdemobackendapp-env
+    environment: Zgdemobackendapp-env-1
 environment-defaults:
   Zgdemobackendapp-env:
     branch: main
