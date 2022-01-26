@@ -37,3 +37,6 @@ cloud:
 vl:
   datasource:
     secret: vl/zg/demo/backend/datasource
+  cors:
+      allowed-origins: >
+        http://localhost:3000
