@@ -19,4 +19,9 @@ class UserService(private val userRepository: UserRepository) {
     fun createUser(email: String?, firstname: String?, lastName: String?): User {
         return userRepository.save(User(id = null, email = email, firstName = firstname, lastName = lastName))
     }
+
+    @Transactional(readOnly = true)
+    fun getByEmail(email: String): User? {
+        return userRepository.getDistinctByEmail(email)
+    }
 }

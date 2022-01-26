@@ -40,3 +40,5 @@ vl:
   cors:
       allowed-origins: >
         http://localhost:3000
+        https://master.d3rf82j3x7kyh1.amplifyapp.com
+        https://zgora.cloud.valuelogic.one

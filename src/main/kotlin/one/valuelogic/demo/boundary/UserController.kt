@@ -45,4 +45,10 @@ class UserController(private val userService: UserService, private val userResou
                 .toUri()
         ).body(resource)
     }
+
+    @GetMapping(path = ["users/{email}"], produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun getByEmail(@PathVariable email: String): ResponseEntity<UserResource> {
+        val user = userService.getByEmail(email)
+        return user?.let { ResponseEntity.ok(userResourceAssembler.toModel(it)) } ?: ResponseEntity.notFound().build()
+    }
 }
