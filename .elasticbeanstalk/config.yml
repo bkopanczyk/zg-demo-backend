@@ -2,7 +2,7 @@ branch-defaults:
   main:
     environment: Zgdemobackendapp-env-1
 environment-defaults:
-  Zgdemobackendapp-env:
+  Zgdemobackendapp-env-1:
     branch: main
     repository: zg-demo-backend-app
 global:

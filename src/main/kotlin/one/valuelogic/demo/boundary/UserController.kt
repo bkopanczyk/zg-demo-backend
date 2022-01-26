@@ -8,9 +8,9 @@ import org.springframework.data.web.PagedResourcesAssembler
 import org.springframework.data.web.SortDefault
 import org.springframework.hateoas.PagedModel
 import org.springframework.http.MediaType
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
 @RestController
 @RequestMapping(path = ["/api/v1"])
@@ -26,5 +26,23 @@ class UserController(private val userService: UserService, private val userResou
     ): PagedModel<UserResource>? {
         LOGGER.info("Get all users call requested")
         return userService.getUsers(pageable)?.let { pagedResourcesAssembler.toModel(it, userResourceAssembler) }
+    }
+
+    @PostMapping(path = ["users"], produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun create(@RequestBody userResource: UserResource): ResponseEntity<UserResource> {
+        val resource = userResourceAssembler.toModel(
+            userService.createUser(
+                userResource.email,
+                userResource.firstName,
+                userResource.lastName
+            )
+        )
+        return ResponseEntity.created(
+            ServletUriComponentsBuilder
+                .fromCurrentRequestUri()
+                .pathSegment(resource.email)
+                .build()
+                .toUri()
+        ).body(resource)
     }
 }

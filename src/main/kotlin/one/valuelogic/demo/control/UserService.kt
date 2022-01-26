@@ -10,7 +10,13 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional
 class UserService(private val userRepository: UserRepository) {
+
+    @Transactional(readOnly = true)
     fun getUsers(page: Pageable): Page<User>? {
         return userRepository.findAll(page)
+    }
+
+    fun createUser(email: String?, firstname: String?, lastName: String?): User {
+        return userRepository.save(User(id = null, email = email, firstName = firstname, lastName = lastName))
     }
 }

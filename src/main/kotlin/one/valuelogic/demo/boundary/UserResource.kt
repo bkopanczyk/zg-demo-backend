@@ -6,5 +6,5 @@ import org.springframework.hateoas.server.core.Relation
 
 @Relation(value = "user", collectionRelation = "users")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-data class UserResource(val firstName: String, val lastName: String, val email: String) :
+data class UserResource(val firstName: String?, val lastName: String?, val email: String?) :
     RepresentationModel<UserResource>()
