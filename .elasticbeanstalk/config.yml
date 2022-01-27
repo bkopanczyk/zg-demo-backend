@@ -1,8 +1,8 @@
 branch-defaults:
   main:
-    environment: Zgdemobackendapp-env-1
+    environment: ZielonaGoraElasticEnvironment
 environment-defaults:
-  Zgdemobackendapp-env-1:
+  ZielonaGoraElasticEnvironment:
     branch: main
     repository: zg-demo-backend-app
 global:
